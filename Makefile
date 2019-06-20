@@ -1,5 +1,5 @@
-LIBRARY_VERSION=$(shell cat library/setup.py | grep version | awk -F"'" '{print $$2}')
-LIBRARY_NAME=$(shell cat library/setup.py | grep name | awk -F"'" '{print $$2}')
+LIBRARY_VERSION=$(shell cat library/setup.cfg | grep version | awk -F" = " '{print $$2}')
+LIBRARY_NAME=$(shell cat library/setup.cfg | grep name | awk -F" = " '{print $$2}')
 
 .PHONY: usage install uninstall
 usage:
@@ -42,8 +42,6 @@ python-license: library/LICENSE.txt
 
 library/README.rst: README.md
 	pandoc --from=markdown --to=rst -o library/README.rst README.md
-	echo "" >> library/README.rst
-	cat library/CHANGELOG.txt >> library/README.rst
 
 library/LICENSE.txt: LICENSE
 	cp LICENSE library/LICENSE.txt
