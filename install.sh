@@ -1,5 +1,8 @@
 #!/bin/bash
 
+CONFIG=/boot/config.txt
+DATESTAMP=`date "+%Y-%M-%d-%H-%M-%S"`
+
 eval `python - <<EOF
 from configparser import ConfigParser
 c = ConfigParser()
@@ -9,8 +12,8 @@ a.update(c['metadata'])
 print("""
 LIBRARY_NAME="{name}"
 LIBRARY_VERSION="{version}"
-PY3DEPS="{py3deps}"
-PY2DEPS="{py2deps}"
+PY3_DEPS="{py3deps}"
+PY2_DEPS="{py2deps}"
 """.format(**a))
 EOF`
 
