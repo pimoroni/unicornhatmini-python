@@ -29,7 +29,7 @@ minimum_version = version.pkg_resources.parse_version('30.4.0')
 if version.pkg_resources.parse_version(__version__) < minimum_version:
     raise RuntimeError("Package setuptools must be at least version {}".format(minimum_version))
 
-result = setup(
+setup(
     packages=['{{LIBNAME}}'],
     install_requires=['setuptools>='.format(minimum_version)]
 )
