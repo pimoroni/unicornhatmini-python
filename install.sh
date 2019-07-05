@@ -97,8 +97,9 @@ for ((i = 0; i < ${#CONFIG_TXT[@]}; i++)); do
 	CONFIG_LINE="${CONFIG_TXT[$i]}"
 	if ! [ "$CONFIG_LINE" == "" ]; then
 		do_config_backup
-		sed -i 's/^#$CONFIG_LINE/$CONFIG_LINE/' $CONFIG
-		if ! grep -q -E "^$CONFIG_LINE" $CONFIG; then
+		printf "Adding $CONFIG_LINE to $CONFIG\n"
+		sed -i "s/^#$CONFIG_LINE/$CONFIG_LINE/" $CONFIG
+		if ! grep -q "^$CONFIG_LINE" $CONFIG; then
 			printf "$CONFIG_LINE\n" >> $CONFIG
 		fi
 	fi
