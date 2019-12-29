@@ -1,4 +1,5 @@
 import time
+import atexit
 
 import spidev
 
@@ -45,6 +46,12 @@ class Minicorn():
             self.xfer(device, pin, [CMD_SCROLL_CTRL, 0x00])
             self.xfer(device, pin, [CMD_SYSTEM_CTRL, 0x03])
 
+        atexit.register(self._exit)
+
+    def _exit(self):
+        self.clear()
+        self.show()
+
     def xfer(self, device, pin, command):
         GPIO.output(pin, GPIO.LOW)
         device.xfer2(command)
@@ -53,6 +60,16 @@ class Minicorn():
     def set_pixel(self, x, y, r, g, b):
         offset = (x * ROWS) + y
         self.disp[offset] = [r >> 2, g >> 2, b >> 2]
+
+    def set_all(self, r, g, b):
+        r >>= 2
+        g >>= 2
+        b >>= 2
+        for i in range(ROWS * COLS):
+            self.disp[i] = [r, g, b]
+
+    def clear(self):
+        self.set_all(0, 0, 0)
 
     def brightness(self, b=0.2):
         for device, pin, _ in self.left_matrix, self.right_matrix:
