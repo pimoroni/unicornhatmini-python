@@ -30,6 +30,7 @@ class Minicorn():
         self.left_matrix = (spidev.SpiDev(0, 0), 8, 0)
         self.right_matrix = (spidev.SpiDev(0, 1), 7, 28 * 8)
 
+        GPIO.setwarnings(False)
         GPIO.setmode(GPIO.BCM)
 
         self.buf = [0] * 28 * 8 * 2
