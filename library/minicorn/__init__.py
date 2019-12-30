@@ -49,9 +49,15 @@ class Minicorn():
 
         atexit.register(self._exit)
 
+    def _shutdown(self):
+        for device, pin, _ in self.left_matrix, self.right_matrix:
+            self.xfer(device, pin, [CMD_COM_PIN_CTRL, 0x00])
+            self.xfer(device, pin, [CMD_ROW_PIN_CTRL, 0x00, 0x00, 0x00, 0x00])
+            self.xfer(device, pin, [CMD_SYSTEM_CTRL, 0x00])
+
+
     def _exit(self):
-        self.clear()
-        self.show()
+        self._shutdown()
 
     def xfer(self, device, pin, command):
         GPIO.output(pin, GPIO.LOW)
