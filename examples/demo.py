@@ -1,11 +1,9 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import colorsys
 import math
 import time
-
 from minicorn import Minicorn
-
 
 print("""Minicorn: demo.py
 
@@ -16,17 +14,16 @@ Press Ctrl+C to exit!
 """)
 
 minicorn = Minicorn()
-
 minicorn.brightness(0.1)
 u_width, u_height = minicorn.get_shape()
 
-# Generate a lookup table for 8bit hue to RGB conversion
+# Generate a lookup table for 8-bit hue to RGB conversion
 hue_to_rgb = []
 
 for i in range(0, 360):
     hue_to_rgb.append(colorsys.hsv_to_rgb(i / 359.0, 1, 1))
 
-# twisty swirly goodness
+# Twisty swirly goodness
 def swirl(x, y, step):
     x -= (u_width / 2)
     y -= (u_height / 2)
@@ -42,7 +39,7 @@ def swirl(x, y, step):
     return (r, r + (s * 130), r + (c * 130))
 
 
-# roto-zooming checker board
+# Roto-zooming checker board
 def checker(x, y, step):
     x -= (u_width / 2)
     y -= (u_height / 2)
@@ -65,7 +62,7 @@ def checker(x, y, step):
     return (r * (v * 255), g * (v * 255), b * (v * 255))
 
 
-# weeee waaaah
+# Weeee waaaah
 def blues_and_twos(x, y, step):
     x -= (u_width / 2)
     y -= (u_height / 2)
@@ -79,7 +76,7 @@ def blues_and_twos(x, y, step):
     return (r * 255, (b + g) * 255, g * 255)
 
 
-# rainbow search spotlights
+# Rainbow search spotlights
 def rainbow_search(x, y, step):
     xs = math.sin((step) / 100.0) * 20.0
     ys = math.cos((step) / 100.0) * 20.0
@@ -90,7 +87,7 @@ def rainbow_search(x, y, step):
     return (r * 255, g * 255, b * 255)
 
 
-# zoom tunnel
+# Zoom tunnel
 def tunnel(x, y, step):
     speed = step / 100.0
     x -= (u_width / 2)
@@ -132,7 +129,7 @@ t_start = time.time()
 try:
     while True:
         t = time.time() - t_start
-        step = (t * 20)
+        step = (t * 50)
 
         f = t / 10.0
         fx = int(f) % len(effects)
