@@ -11,8 +11,7 @@
 import random
 import time
 
-from minicorn import Minicorn, ROWS, COLS
-
+from minicorn import Minicorn
 
 print("""
 Minicorn: forest-fire.py
@@ -26,11 +25,11 @@ Press Ctrl+C to exit!
 
 # Avoid retina-searage!
 minicorn = Minicorn()
-minicorn.brightness(0.1)
+minicorn.set_brightness(0.1)
+minicorn.set_rotation(0)
 
 # The height and width of the forest.
-height = ROWS
-width = COLS
+width, height = minicorn.get_shape()
 
 # Initial probability of a grid square having a tree
 initial_trees = 0.55

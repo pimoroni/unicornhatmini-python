@@ -22,8 +22,13 @@ CMD_READ_DISPLAY = 0x81
 CMD_SYSTEM_CTRL = 0x35
 CMD_SCROLL_CTRL = 0x20
 
-COLS = 17
-ROWS = 7
+_COLS = 17
+_ROWS = 7
+
+BUTTON_A = 5
+BUTTON_B = 6
+BUTTON_X = 16
+BUTTON_Y = 20
 
 
 class Minicorn():
@@ -36,7 +41,7 @@ class Minicorn():
 
         :param spi_max_speed_hz: SPI speed in Hz
         """
-        self.disp = [[0, 0, 0] for _ in range(COLS * ROWS)]
+        self.disp = [[0, 0, 0] for _ in range(_COLS * _ROWS)]
         self.left_matrix = (spidev.SpiDev(0, 0), 8, 0)
         self.right_matrix = (spidev.SpiDev(0, 1), 7, 28 * 8)
 
@@ -44,6 +49,7 @@ class Minicorn():
         GPIO.setmode(GPIO.BCM)
 
         self.buf = [0 for _ in range(28 * 8 * 2)]
+        self._rotation = 0
 
         for device, pin, offset in self.left_matrix, self.right_matrix:
             device.no_cs = True
@@ -78,7 +84,17 @@ class Minicorn():
 
     def set_pixel(self, x, y, r, g, b):
         """Set a single pixel."""
-        offset = (x * ROWS) + y
+        offset = (x * _ROWS) + y
+        if self._rotation == 90:
+            y = _COLS - 1 - y
+            offset = (y * _ROWS) + x
+        if self._rotation == 180:
+            x = _COLS - 1 - x
+            y = _ROWS - 1 - y
+            offset = (x * _ROWS) + y
+        if self._rotation == 270:
+            x = _ROWS - 1 - x
+            offset = (y * _ROWS) + x
         self.disp[offset] = [r >> 2, g >> 2, b >> 2]
 
     def set_all(self, r, g, b):
@@ -86,19 +102,24 @@ class Minicorn():
         r >>= 2
         g >>= 2
         b >>= 2
-        for i in range(ROWS * COLS):
+        for i in range(_ROWS * _COLS):
             self.disp[i] = [r, g, b]
 
     def clear(self):
         """Set all pixels to 0."""
         self.set_all(0, 0, 0)
 
-    def brightness(self, b=0.2):
+    def set_brightness(self, b=0.2):
         for device, pin, _ in self.left_matrix, self.right_matrix:
             self.xfer(device, pin, [CMD_GLOBAL_BRIGHTNESS, int(63 * b)])
 
+    def set_rotation(self, rotation=0):
+        if rotation not in [0, 90, 180, 270]:
+            raise ValueError("Rotation must be one of 0, 90, 180, 270")
+        self._rotation = rotation
+
     def show(self):
-        for i in range(COLS * ROWS):
+        for i in range(_COLS * _ROWS):
             ir, ig, ib = self.lut[i]
             r, g, b = self.disp[i]
             self.buf[ir] = r
@@ -109,16 +130,19 @@ class Minicorn():
             self.xfer(device, pin, [CMD_WRITE_DISPLAY, 0x00] + self.buf[offset:offset + (28 * 8)])
 
     def get_shape(self):
-        return COLS, ROWS
+        if self._rotation in [90, 270]:
+            return _ROWS, _COLS
+        else:
+            return _COLS, _ROWS
 
 
 if __name__ == "__main__":
     minicorn = Minicorn()
 
     while True:
-        for y in range(ROWS):
-            for x in range(COLS):
-                hue = (time.time() / 4.0) + (x / float(COLS * 2)) + (y / float(ROWS))
+        for y in range(_ROWS):
+            for x in range(_COLS):
+                hue = (time.time() / 4.0) + (x / float(_COLS * 2)) + (y / float(_ROWS))
                 r, g, b = [int(c * 255) for c in hsv_to_rgb(hue, 1.0, 1.0)]
                 minicorn.set_pixel(x, y, r, g, b)
         minicorn.show()

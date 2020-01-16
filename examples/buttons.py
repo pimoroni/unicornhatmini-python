@@ -11,9 +11,11 @@ Press Ctrl+C to exit!
 
 """)
 
+
 def pressed(button):
     button_name = button_map[button.pin.number]
     print(f"Button {button_name} pressed!")
+
 
 button_map = {5:  "A",
               6:  "B",

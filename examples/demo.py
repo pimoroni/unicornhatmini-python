@@ -14,7 +14,8 @@ Press Ctrl+C to exit!
 """)
 
 minicorn = Minicorn()
-minicorn.brightness(0.1)
+minicorn.set_brightness(0.1)
+minicorn.set_rotation(0)
 u_width, u_height = minicorn.get_shape()
 
 # Generate a lookup table for 8-bit hue to RGB conversion
@@ -22,6 +23,7 @@ hue_to_rgb = []
 
 for i in range(0, 360):
     hue_to_rgb.append(colorsys.hsv_to_rgb(i / 359.0, 1, 1))
+
 
 # Twisty swirly goodness
 def swirl(x, y, step):
