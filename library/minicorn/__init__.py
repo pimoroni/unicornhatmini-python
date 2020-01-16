@@ -105,7 +105,7 @@ class Minicorn():
         for i in range(_ROWS * _COLS):
             self.disp[i] = [r, g, b]
 
-    def set_image(self, image, offset_x=0, offset_y=0, bg_color=(0, 0, 0)):
+    def set_image(self, image, offset_x=0, offset_y=0, wrap=False, bg_color=(0, 0, 0)):
         """Set a PIL image to the display buffer."""
         image_width, image_height = image.size
 
@@ -117,8 +117,15 @@ class Minicorn():
         for y in range(display_height):
             for x in range(display_width):
                 r, g, b = bg_color
-                if x + offset_x < image_width and y + offset_y < image_height:
-                    r, g, b = image.getpixel((x + offset_x, y + offset_y))
+                i_x = x + offset_x
+                i_y = y + offset_y
+                if wrap:
+                    while i_x >= image_width:
+                        i_x -= image_width
+                    while i_y >= image_height:
+                        i_y -= image_height
+                if i_x < image_width and i_y < image_height:
+                    r, g, b = image.getpixel((i_x, i_y))
                 self.set_pixel(x, y, r, g, b)
 
     def clear(self):
