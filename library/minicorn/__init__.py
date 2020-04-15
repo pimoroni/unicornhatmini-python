@@ -73,7 +73,6 @@ class Minicorn():
             self.xfer(device, pin, [CMD_ROW_PIN_CTRL, 0x00, 0x00, 0x00, 0x00])
             self.xfer(device, pin, [CMD_SYSTEM_CTRL, 0x00])
 
-
     def _exit(self):
         self._shutdown()
 
