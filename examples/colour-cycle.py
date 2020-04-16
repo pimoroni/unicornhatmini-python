@@ -13,7 +13,7 @@ Press Ctrl+C to exit!
 """)
 
 unicornhatmini = UnicornHATMini()
-unicornhatmini.brightness(0.1)
+unicornhatmini.set_brightness(0.1)
 
 while True:
     hue = (time.time() / 10.0)
