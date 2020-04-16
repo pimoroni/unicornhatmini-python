@@ -7,7 +7,7 @@ from unicornhatmini import UnicornHATMini
 
 print("""Unicorn HAT Mini: rainbow.py
 
-Displays a concentric rainbow that moves around the UnicornHATMini display.
+Displays a concentric rainbow that moves around the Unicorn HAT Mini display.
 
 Press Ctrl+C to exit!
 

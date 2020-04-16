@@ -7,7 +7,7 @@ from unicornhatmini import UnicornHATMini
 
 print("""Unicorn HAT Mini: fps.py
 
-Attempts to refresh the UnicornHATMini display as fast as possible
+Attempts to refresh the Unicorn HAT Mini display as fast as possible
 with a horizontal rainbow and displays the frames per second
 refresh rate.
 
