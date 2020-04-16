@@ -3,10 +3,10 @@ import time
 import random
 
 from gpiozero import Button
-from minicorn import Minicorn
+from unicornhatmini import UnicornHATMini
 
-minicorn = Minicorn()
-minicorn.set_rotation(270)
+unicornhatmini = UnicornHATMini()
+unicornhatmini.set_rotation(270)
 
 
 class Game:
@@ -176,7 +176,7 @@ button_b = Button(6)   # [B]lue
 button_x = Button(16)  # Green
 button_y = Button(20)  # [Y]ellow
 
-game = Game(minicorn)
+game = Game(unicornhatmini)
 
 button_y.when_pressed = game.rotate
 button_x.when_pressed = game.move

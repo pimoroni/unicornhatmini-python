@@ -11,10 +11,10 @@
 import random
 import time
 
-from minicorn import Minicorn
+from unicornhatmini import UnicornHATMini
 
 print("""
-Minicorn: forest-fire.py
+Unicorn HAT Mini: forest-fire.py
 
 Forest fire model cellular automaton. Simulates the growth
 of trees in a forest, with sporadic outbreaks of forest fires.
@@ -24,12 +24,12 @@ Press Ctrl+C to exit!
 
 
 # Avoid retina-searage!
-minicorn = Minicorn()
-minicorn.set_brightness(0.1)
-minicorn.set_rotation(0)
+unicornhatmini = UnicornHATMini()
+unicornhatmini.set_brightness(0.1)
+unicornhatmini.set_rotation(0)
 
 # The height and width of the forest.
-width, height = minicorn.get_shape()
+width, height = unicornhatmini.get_shape()
 
 # Initial probability of a grid square having a tree
 initial_trees = 0.55
@@ -55,13 +55,13 @@ def initialise():
     return grid
 
 
-# Display the forest, in its current state, on Minicorn
+# Display the forest, in its current state, on UnicornHATMini
 def show_grid(grid):
-    minicorn.clear()
+    unicornhatmini.clear()
     for x in range(width):
         for y in range(height):
-            minicorn.set_pixel(x, y, *grid[(x, y)])
-    minicorn.show()
+            unicornhatmini.set_pixel(x, y, *grid[(x, y)])
+    unicornhatmini.show()
 
 
 # Go through grid, update grid squares based on state of

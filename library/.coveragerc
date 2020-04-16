@@ -1,4 +1,4 @@
 [run]
-source = minicorn
+source = unicornhatmini
 omit =
     .tox/*

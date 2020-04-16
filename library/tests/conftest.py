@@ -13,7 +13,7 @@ def cleanup():
     """
 
     yield None
-    del sys.modules["minicorn"]
+    del sys.modules["unicornhatmini"]
 
 
 @pytest.fixture(scope='function', autouse=False)

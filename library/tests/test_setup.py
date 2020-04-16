@@ -2,8 +2,8 @@ import mock
 
 
 def test_setup(GPIO, spidev):
-    from minicorn import Minicorn
-    minicorn = Minicorn()
+    from unicornhatmini import UnicornHATMini
+    unicornhatmini = UnicornHATMini()
 
     spidev.SpiDev.assert_has_calls((
         mock.call(0, 0),
@@ -13,12 +13,12 @@ def test_setup(GPIO, spidev):
     GPIO.setwarnings.assert_called_once_with(False)
     GPIO.setmode.assert_called_once_with(GPIO.BCM)
 
-    del minicorn
+    del unicornhatmini
 
 
 def test_shutdown(GPIO, spidev, atexit):
-    from minicorn import Minicorn
-    minicorn = Minicorn()
+    from unicornhatmini import UnicornHATMini
+    unicornhatmini = UnicornHATMini()
 
-    atexit.register.assert_called_once_with(minicorn._exit)
-    minicorn._exit()
+    atexit.register.assert_called_once_with(unicornhatmini._exit)
+    unicornhatmini._exit()

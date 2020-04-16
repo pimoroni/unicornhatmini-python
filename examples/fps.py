@@ -2,12 +2,12 @@
 
 import time
 from colorsys import hsv_to_rgb
-from minicorn import Minicorn
+from unicornhatmini import UnicornHATMini
 
 
-print("""Minicorn: fps.py
+print("""Unicorn HAT Mini: fps.py
 
-Attempts to refresh the Minicorn display as fast as possible
+Attempts to refresh the UnicornHATMini display as fast as possible
 with a horizontal rainbow and displays the frames per second
 refresh rate.
 
@@ -15,10 +15,10 @@ Press Ctrl+C to exit!
 
 """)
 
-minicorn = Minicorn()
-minicorn.set_brightness(0.1)
-minicorn.set_rotation(0)
-width, height = minicorn.get_shape()
+unicornhatmini = UnicornHATMini()
+unicornhatmini.set_brightness(0.1)
+unicornhatmini.set_rotation(0)
+width, height = unicornhatmini.get_shape()
 
 frames = 0
 t_start = time.time()
@@ -33,8 +33,8 @@ while True:
         for x in range(width):
             hue = (time.time() / 10.0) + (x / float(width * 2))
             r, g, b = [int(c * 255) for c in hsv_to_rgb(hue, 1.0, 1.0)]
-            minicorn.set_pixel(x, y, r, g, b)
-    minicorn.show()
+            unicornhatmini.set_pixel(x, y, r, g, b)
+    unicornhatmini.show()
 
     frames += 1
 

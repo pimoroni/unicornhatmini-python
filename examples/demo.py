@@ -3,9 +3,9 @@
 import colorsys
 import math
 import time
-from minicorn import Minicorn
+from unicornhatmini import UnicornHATMini
 
-print("""Minicorn: demo.py
+print("""Unicorn HAT Mini: demo.py
 
 This pixel shading demo transitions between 4 classic graphics demo effects.
 
@@ -13,10 +13,10 @@ Press Ctrl+C to exit!
 
 """)
 
-minicorn = Minicorn()
-minicorn.set_brightness(0.1)
-minicorn.set_rotation(0)
-u_width, u_height = minicorn.get_shape()
+unicornhatmini = UnicornHATMini()
+unicornhatmini.set_brightness(0.1)
+unicornhatmini.set_rotation(0)
+u_width, u_height = unicornhatmini.get_shape()
 
 # Generate a lookup table for 8-bit hue to RGB conversion
 hue_to_rgb = []
@@ -149,9 +149,9 @@ try:
                 r = int(max(0, min(255, r)))
                 g = int(max(0, min(255, g)))
                 b = int(max(0, min(255, b)))
-                minicorn.set_pixel(x, y, r, g, b)
+                unicornhatmini.set_pixel(x, y, r, g, b)
 
-        minicorn.show()
+        unicornhatmini.show()
         time.sleep(1.0 / 60.0)
 
 except KeyboardInterrupt:

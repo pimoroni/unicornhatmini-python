@@ -3,20 +3,20 @@
 import time
 import math
 from colorsys import hsv_to_rgb
-from minicorn import Minicorn
+from unicornhatmini import UnicornHATMini
 
-print("""Minicorn: rainbow.py
+print("""Unicorn HAT Mini: rainbow.py
 
-Displays a concentric rainbow that moves around the Minicorn display.
+Displays a concentric rainbow that moves around the UnicornHATMini display.
 
 Press Ctrl+C to exit!
 
 """)
 
-minicorn = Minicorn()
-minicorn.set_brightness(0.1)
-minicorn.set_rotation(0)
-width, height = minicorn.get_shape()
+unicornhatmini = UnicornHATMini()
+unicornhatmini.set_brightness(0.1)
+unicornhatmini.set_rotation(0)
+width, height = unicornhatmini.get_shape()
 
 step = 0
 
@@ -32,7 +32,7 @@ while True:
             hue = math.sqrt(math.pow(x - dx, 2) + math.pow(y - dy, 2)) / sc
             r, g, b = [int(c * 255) for c in hsv_to_rgb(hue, 1, 1)]
 
-            minicorn.set_pixel(x, y, r, g, b)
+            unicornhatmini.set_pixel(x, y, r, g, b)
 
-    minicorn.show()
+    unicornhatmini.show()
     time.sleep(1.0 / 60)

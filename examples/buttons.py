@@ -3,9 +3,9 @@
 from gpiozero import Button
 from signal import pause
 
-print("""Minicorn: buttons.py
+print("""Unicorn HAT Mini: buttons.py
 
-Demonstrates the use of Minicorn's buttons with gpiozero.
+Demonstrates the use of Unicorn HAT Mini's buttons with gpiozero.
 
 Press Ctrl+C to exit!
 

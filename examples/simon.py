@@ -6,10 +6,10 @@ import random
 import colorsys
 
 from gpiozero import Button
-from minicorn import Minicorn
+from unicornhatmini import UnicornHATMini
 
-minicorn = Minicorn()
-minicorn.set_brightness(0.5)
+unicornhatmini = UnicornHATMini()
+unicornhatmini.set_brightness(0.5)
 
 # Digits as 3x5 pixel elements stored as 15bits
 # MSB is top-left, each 5 bits are a column
@@ -35,7 +35,7 @@ Y = 3
 class Display():
     """Virtual Simon display class.
 
-    This class wraps an output device (minicorn) and makes it behave like a display
+    This class wraps an output device (unicornhatmini) and makes it behave like a display
     with four fixed colour lights (Red, Yellow, Blue and Green) and two 3x5 numeric digits.
 
     """
@@ -347,7 +347,7 @@ button_b = Button(6)   # [B]lue
 button_x = Button(16)  # Green
 button_y = Button(20)  # [Y]ellow
 
-display = Display(output_device=minicorn)
+display = Display(output_device=unicornhatmini)
 game = Game(display)
 
 button_a.when_pressed = game.button_a
