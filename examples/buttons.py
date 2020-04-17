@@ -20,12 +20,12 @@ def pressed(button):
 button_map = {5:  "A",
               6:  "B",
               16: "X",
-              20: "Y"}
+              24: "Y"}
 
 button_a = Button(5)
 button_b = Button(6)
 button_x = Button(16)
-button_y = Button(20)
+button_y = Button(24)
 
 try:
     button_a.when_pressed = pressed

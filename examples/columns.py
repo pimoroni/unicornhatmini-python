@@ -174,7 +174,7 @@ class Column:
 button_a = Button(5)   # Red
 button_b = Button(6)   # [B]lue
 button_x = Button(16)  # Green
-button_y = Button(20)  # [Y]ellow
+button_y = Button(24)  # [Y]ellow
 
 game = Game(unicornhatmini)
 

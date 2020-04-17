@@ -24,7 +24,7 @@
 
 Unicorn HAT Mini includes an array of 17x7 LEDs you can control by setting individual pixels, or whole pre-prepared images.
 
-It also includes four buttons on BCM pins 5, 6, 16 and 20. We demonstrate using the GPIO Zero library with these.
+It also includes four buttons on BCM pins 5, 6, 16 and 24. We demonstrate using the GPIO Zero library with these.
 
 ### Installing
 
@@ -193,7 +193,7 @@ To send your image or carefully curated pixels to Unicorn HAT Mini you should ca
 
 To use the buttons on your Unicorn HAT Mini you should use the GPIO Zero library.
 
-Unicorn HAT Mini has four buttons on pins BCM 5, 6, 16 and 20.
+Unicorn HAT Mini has four buttons on pins BCM 5, 6, 16 and 24.
 
 The example below shows how you might bind them to a function:
 
@@ -206,7 +206,7 @@ def pressed(pin):
 button_a = Button(5)
 button_b = Button(6)
 button_x = Button(16)
-button_y = Button(20)
+button_y = Button(24)
 
 button_a.when_pressed = pressed
 button_b.when_pressed = pressed
