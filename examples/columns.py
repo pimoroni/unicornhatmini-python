@@ -24,8 +24,6 @@ class Game:
         self.current = Column(3, -3)
 
     def update(self, fps=50.0):
-        t = time.time()
-
         if self._move:
             self.current.move(self.playing_field, 1.0, 0)
             self._move = False
@@ -126,9 +124,9 @@ class Column:
         self.x = x
         self.y = y
         self.sequence = [
-            random.choice(self.colors),    
-            random.choice(self.colors),    
-            random.choice(self.colors),    
+            random.choice(self.colors),
+            random.choice(self.colors),
+            random.choice(self.colors),
         ]
 
     def rotate(self):
@@ -144,7 +142,7 @@ class Column:
             for block in collissions:
                 if block != (0, 0, 0):
                     return True
-            
+
             self.x = new_x
 
         if y > 0:
@@ -157,9 +155,8 @@ class Column:
                 return True
 
             self.y = new_y
-        
-        return False
 
+        return False
 
     def draw(self, display):
         for i, color in enumerate(self.sequence):

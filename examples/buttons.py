@@ -17,8 +17,8 @@ def pressed(button):
     print(f"Button {button_name} pressed!")
 
 
-button_map = {5:  "A",
-              6:  "B",
+button_map = {5: "A",
+              6: "B",
               16: "X",
               24: "Y"}
 

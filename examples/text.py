@@ -10,6 +10,9 @@ from unicornhatmini import UnicornHATMini
 # The text we want to display. You should probably keep this line and replace it below
 # That way you'll have a guide as to what characters are supported!
 text = "abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789 #@&!?{}<>[]();:.,'%*=+-=$_\\/ :-)"
+text = "Where did it all go wrong? :|"
+text = "Hello Hodgeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeey!!!"
+text = "I am the great and mighty Oz!"
 
 unicornhatmini = UnicornHATMini()
 
