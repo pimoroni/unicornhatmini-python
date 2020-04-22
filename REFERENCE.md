@@ -93,6 +93,8 @@ You can change the update rate, and consequently the framerate, by changing the 
 
 Demonstrates the use of PIL (Python Image Library) to create an image and display it upon Unicorn HAT Mini.
 
+In this case it's scrolling an image longer than the display to produce a wavy line pattern.
+
 Whether you're scrolling text or displaying a UI for your project, you'll probably use PIL.
 
 ### Rainbow
