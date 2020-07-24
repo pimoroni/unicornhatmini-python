@@ -9,7 +9,7 @@ from colorsys import hsv_to_rgb
 
 import RPi.GPIO as GPIO
 
-__version__ = '0.0.1'
+__version__ = '0.0.2'
 
 
 # Holtek HT16D35

@@ -1,3 +1,8 @@
+0.0.2
+-----
+
+* Fix for Pi kernel 5.4.51, removed cshigh setting from SPI setup
+
 0.0.1
 -----
 
