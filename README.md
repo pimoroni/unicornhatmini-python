@@ -5,11 +5,21 @@
 [![PyPi Package](https://img.shields.io/pypi/v/unicornhatmini.svg)](https://pypi.python.org/pypi/unicornhatmini)
 [![Python Versions](https://img.shields.io/pypi/pyversions/unicornhatmini.svg)](https://pypi.python.org/pypi/unicornhatmini)
 
+# Requirements
+
+You must enable SPI on your Raspberry Pi:
+
+* Run: `sudo raspi-config nonint do_spi 0`
+
 # Installing
 
 Stable library from PyPi:
 
-* Just run `sudo pip install unicornhatmini`
+* Just run `sudo pip3 install unicornhatmini`
+
+Or for Python 2:
+
+* `sudo pip install unicornhatmini`
 
 Latest/development library from GitHub:
 
