@@ -53,7 +53,6 @@ class UnicornHATMini():
 
         for device, pin, offset in self.left_matrix, self.right_matrix:
             device.no_cs = True
-            device.cshigh = False
             device.max_speed_hz = spi_max_speed_hz
             GPIO.setup(pin, GPIO.OUT, initial=GPIO.HIGH)
             self.xfer(device, pin, [CMD_SOFT_RESET])
