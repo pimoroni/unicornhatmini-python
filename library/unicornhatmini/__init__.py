@@ -28,7 +28,7 @@ _ROWS = 7
 BUTTON_A = 5
 BUTTON_B = 6
 BUTTON_X = 16
-BUTTON_Y = 20
+BUTTON_Y = 24
 
 
 class UnicornHATMini():
